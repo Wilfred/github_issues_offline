@@ -17,6 +17,21 @@
   (uiop:read-file-string
    "issues.json"))
 
+(defun all-issues ()
+  ;; https://github.com/Zulu-Inuoe/jzon/
+  (jzon:parse (read-issues-json)))
+
+;; https://gigamonkeys.com/book/object-reorientation-classes
+(defclass issue ()
+  ((title
+    :initarg :title
+    :initform (error "Title is required."))
+   (number
+    :initarg :number
+    :initform (error "Issue number is required."))))
+
+;; (make-instance 'issue :title "hello" :number 123)
+
 (defun main ()
   "Greet someone, or something."
   (write-line (greet (first (uiop:command-line-arguments))))
