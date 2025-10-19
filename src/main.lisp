@@ -30,7 +30,11 @@
     :initarg :number
     :initform (error "Issue number is required."))))
 
-;; (make-instance 'issue :title "hello" :number 123)
+(defmethod print-object ((obj issue) out)
+  (print-unreadable-object (obj out :type t)
+    (format out "~s ~s" (slot-value obj 'number) (slot-value obj 'title))))
+
+(make-instance 'issue :title "hello" :number 123)
 
 (defun main ()
   "Greet someone, or something."
