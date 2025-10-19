@@ -4,7 +4,7 @@
 
 (defpackage :gio
   (:use :common-lisp)
-  (:export :greet :main))
+  (:export :greet :main :read-issues-json))
 
 (in-package :gio)
 
@@ -12,6 +12,10 @@
   "Create a greeting message for WHOM."
   (format nil "Hello, ~A." whom))
 
+(defun read-issues-json ()
+  "Read the contents of src/issues.json and return it as a string."
+  (uiop:read-file-string
+   "issues.json"))
 
 (defun main ()
   "Greet someone, or something."
