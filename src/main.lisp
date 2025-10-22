@@ -30,7 +30,13 @@
     :initform (error "Issue number is required."))
    (url
     :initarg :url
-    :initform (error "URL is required."))))
+    :initform (error "URL is required."))
+   (created-at
+    :initarg :created-at
+    :initform (error "created-at is required."))
+   (updated-at
+    :initarg :updated-at
+    :initform (error "updated-at is required."))))
 
 (defmethod print-object ((obj issue) out)
   (print-unreadable-object (obj out :type t)
@@ -41,7 +47,9 @@
    'issue
    :title (gethash "title" hash)
    :number (gethash "number" hash)
-   :url (gethash "url" hash)))
+   :url (gethash "url" hash)
+   :created-at (gethash "created_at" hash)
+   :updated-at (gethash "updated_at" hash)))
 
 (defclass comment ()
   ((body
