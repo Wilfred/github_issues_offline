@@ -35,6 +35,20 @@
 
 (make-instance 'issue :title "hello" :number 123)
 
+(defun issue-from-hash (hash)
+  (make-instance 'issue
+                 :title (gethash "title" hash)
+                 :number (gethash "number" hash)))
+
+(defclass user ()
+  ((login
+    :initarg :login
+    :initform (error "Login (username) is required."))))
+
+(defun user-from-hash (hash)
+  (make-instance 'user
+                 :login (gethash "login" hash)))
+
 (defun main ()
   "Greet someone, or something."
   (write-line (greet (first (uiop:command-line-arguments))))
