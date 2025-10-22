@@ -57,6 +57,21 @@
   (make-instance 'user
                  :login (gethash "login" hash)))
 
+;; (defparameter *comments*
+;;   (jzon:parse (uiop:read-file-string "comments.json")))
+
+;; (defparameter *issues*
+;;   (jzon:parse (uiop:read-file-string "issues.json")))
+
+;; (defun hash-keys (hash)
+;;   (let ((keys '()))
+;;     (maphash (lambda (k v)
+;;                (push k keys))
+;;              hash)
+;;     keys))
+
+;; (hash-keys (elt *comments* 0))
+
 (defun main ()
   "Greet someone, or something."
   (write-line (greet (first (uiop:command-line-arguments))))
