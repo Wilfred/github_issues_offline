@@ -14,8 +14,7 @@
 
 (defun read-issues-json ()
   "Read the contents of src/issues.json and return it as a string."
-  (uiop:read-file-string
-   "issues.json"))
+  (uiop:read-file-string "issues.json"))
 
 (defun all-issues ()
   ;; https://github.com/Zulu-Inuoe/jzon/
