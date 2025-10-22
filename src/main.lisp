@@ -27,18 +27,26 @@
     :initform (error "Title is required."))
    (number
     :initarg :number
-    :initform (error "Issue number is required."))))
+    :initform (error "Issue number is required."))
+   (url
+    :initarg :url
+    :initform (error "URL is required."))))
 
 (defmethod print-object ((obj issue) out)
   (print-unreadable-object (obj out :type t)
     (format out "~s ~s" (slot-value obj 'number) (slot-value obj 'title))))
 
-(make-instance 'issue :title "hello" :number 123)
-
 (defun issue-from-hash (hash)
-  (make-instance 'issue
-                 :title (gethash "title" hash)
-                 :number (gethash "number" hash)))
+  (make-instance
+   'issue
+   :title (gethash "title" hash)
+   :number (gethash "number" hash)
+   :url (gethash "url" hash)))
+
+(defclass comment ()
+  ((body
+    :initarg :body
+    :initform (error "Body is required."))))
 
 (defclass user ()
   ((login
