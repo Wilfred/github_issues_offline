@@ -83,10 +83,15 @@
 ;;              hash)
 ;;     keys))
 
-;; (hash-keys (elt *comments* 0))
+;; (issue-from-hash (elt *issues* 0))
 
 (defun main ()
-  "Greet someone, or something."
-  (write-line (greet (first (uiop:command-line-arguments))))
+  "Print issues."
+  (let* ((issues-path (first (uiop:command-line-arguments)))
+         (issues-src (uiop:read-file-string issues-path))
+         (issues-json (com.inuoe.jzon:parse issues-src)))
+    (loop
+      for item across issues-json
+      do (write-line (format nil "item: ~A." (issue-from-hash item)))))
 
   (uiop:quit))
