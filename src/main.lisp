@@ -2,11 +2,16 @@
 
 (require :asdf)
 
+(load "~/quicklisp/setup.lisp")
+
 (defpackage :gio
   (:use :common-lisp)
   (:export :greet :main :read-issues-json))
 
 (in-package :gio)
+
+(ql:quickload '#:com.inuoe.jzon)
+(sb-ext:add-package-local-nickname '#:jzon '#:com.inuoe.jzon)
 
 (defun greet (whom)
   "Create a greeting message for WHOM."
