@@ -78,10 +78,10 @@
                  :login (gethash "login" hash)))
 
 ;; (defparameter *comments*
-;;   (jzon:parse (uiop:read-file-string "comments.json")))
+;;   (com.inuoe.jzon:parse (uiop:read-file-string "comments.json")))
 
 ;; (defparameter *issues*
-;;   (jzon:parse (uiop:read-file-string "issues.json")))
+;;   (com.inuoe.jzon:parse (uiop:read-file-string "issues.json")))
 
 ;; (defun hash-keys (hash)
 ;;   (let ((keys '()))
