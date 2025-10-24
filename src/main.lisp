@@ -33,6 +33,9 @@
    (number
     :initarg :number
     :initform (error "Issue number is required."))
+   (state
+    :initarg :state
+    :initform (error "State is required."))
    (url
     :initarg :url
     :initform (error "URL is required."))
@@ -45,13 +48,17 @@
 
 (defmethod print-object ((obj issue) out)
   (print-unreadable-object (obj out :type t)
-    (format out "~s ~s" (slot-value obj 'number) (slot-value obj 'title))))
+    (format out "~s ~s ~s"
+            (slot-value obj 'number)
+            (slot-value obj 'state)
+            (slot-value obj 'title))))
 
 (defun issue-from-hash (hash)
   (make-instance
    'issue
    :title (gethash "title" hash)
    :number (gethash "number" hash)
+   :state (gethash "state" hash)
    :url (gethash "url" hash)
    :created-at (gethash "created_at" hash)
    :updated-at (gethash "updated_at" hash)))
