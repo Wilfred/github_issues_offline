@@ -48,7 +48,7 @@
 
 (defmethod print-object ((obj issue) out)
   (print-unreadable-object (obj out :type t)
-    (format out "~s ~s ~s"
+    (format out "~s ~A ~s"
             (slot-value obj 'number)
             (slot-value obj 'state)
             (slot-value obj 'title))))
@@ -90,6 +90,7 @@
 ;;              hash)
 ;;     keys))
 
+;; (hash-keys (elt *issues* 0))
 ;; (issue-from-hash (elt *issues* 0))
 
 (defun main ()
@@ -99,6 +100,6 @@
          (issues-json (com.inuoe.jzon:parse issues-src)))
     (loop
       for item across issues-json
-      do (write-line (format nil "item: ~A." (issue-from-hash item)))))
+      do (write-line (format nil "~A" (issue-from-hash item)))))
 
   (uiop:quit))
