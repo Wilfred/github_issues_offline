@@ -81,6 +81,13 @@
   (make-instance 'user
                  :login (gethash "login" hash)))
 
+(defun format-issue (issue)
+  (format nil "#~a ~a~a~a"
+          (slot-value issue 'number)
+          (slot-value issue 'title)
+          #\Newline
+          (slot-value issue 'body)))
+
 ;; (defparameter *comments*
 ;;   (com.inuoe.jzon:parse (uiop:read-file-string "comments.json")))
 
@@ -104,6 +111,6 @@
          (issues-json (com.inuoe.jzon:parse issues-src)))
     (loop
       for item across issues-json
-      do (write-line (format nil "~A" (issue-from-hash item)))))
-
+      do (let ((issue (issue-from-hash item)))
+           (write-line (format-issue issue)))))
   (uiop:quit))
