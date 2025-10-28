@@ -36,6 +36,9 @@
    (state
     :initarg :state
     :initform (error "State is required."))
+   (body
+    :initarg :body
+    :initform (error "Body is required."))
    (url
     :initarg :url
     :initform (error "URL is required."))
@@ -59,6 +62,7 @@
    :title (gethash "title" hash)
    :number (gethash "number" hash)
    :state (gethash "state" hash)
+   :body (gethash "body" hash)
    :url (gethash "url" hash)
    :created-at (gethash "created_at" hash)
    :updated-at (gethash "updated_at" hash)))
